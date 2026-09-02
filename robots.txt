@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juanborderiapi.github.io/sitemap.xml

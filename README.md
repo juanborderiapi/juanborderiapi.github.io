@@ -1,6 +1,6 @@
-# Portfolio Audiovisual — Juan Javier Bordería Pi
+# Portfolio Audiovisual — Juan Bordería Pi
 
-Repositorio oficial del portfolio web de **Juan Javier Bordería Pi**, Periodista, Comunicador Audiovisual y Editor.
+Repositorio oficial del portfolio web de **Juan Bordería Pi**, Periodista, Comunicador Audiovisual y Editor.
 
 El sitio está diseñado para presentar de manera clara, estructurada y sin intermediarios una selección de proyectos en los que he participado con diferentes roles técnicos y creativos:
 - **Producción Propia**: Proyectos creados íntegramente (cámara, guion, montaje y producción).
@@ -27,4 +27,4 @@ Este proyecto web está desarrollado bajo una filosofía de simplicidad, alto re
 ```
 
 ## Licencia
-Contenidos audiovisuales e imágenes protegidos por derechos de autor. Propiedad de Juan Javier Bordería Pi y las respectivas organizaciones citadas en cada proyecto.
+Contenidos audiovisuales e imágenes protegidos por derechos de autor. Propiedad de Juan Bordería Pi y las respectivas organizaciones citadas en cada proyecto.
