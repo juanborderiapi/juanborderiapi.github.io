@@ -26,5 +26,10 @@ Este proyecto web está desarrollado bajo una filosofía de simplicidad, alto re
 └── index.html        # Estructura principal de la aplicación
 ```
 
+## Despliegue y SEO
+- **Alojamiento**: GitHub Pages ([juanborderiapi.github.io](https://juanborderiapi.github.io/)).
+- **Indexación y Rastreo**: `robots.txt` y `sitemap.xml` en la raíz para el rastreo por motores de búsqueda.
+- **Datos Estructurados**: Schema.org (JSON-LD) configurado para las entidades `Person` y `WebSite` con vinculación a perfiles profesionales (LinkedIn, GitHub e Instagram).
+
 ## Licencia
 Contenidos audiovisuales e imágenes protegidos por derechos de autor. Propiedad de Juan Bordería Pi y las respectivas organizaciones citadas en cada proyecto.
