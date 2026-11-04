@@ -7,6 +7,7 @@ El sitio está diseñado para presentar de manera clara, estructurada y sin inte
 - **Edición y Postproducción**: Piezas multicámara y corporativas montadas en Adobe Premiere Pro.
 - **Locución**: Trabajos de voz en off y narración para vídeos informativos e institucionales.
 - **Redes Sociales (RRSS)**: Contenidos nativos optimizados para plataformas verticales y horizontales (Instagram y YouTube).
+- **Periodismo e Investigación**: Reportajes en profundidad (TDAH / Crisis del Concerta) y gestión editorial en medios universitarios (Mirada 21) con WordPress, SEO y radio.
 
 ## Arquitectura y Tecnologías
 Este proyecto web está desarrollado bajo una filosofía de simplicidad, alto rendimiento y compatibilidad universal sin frameworks pesados:

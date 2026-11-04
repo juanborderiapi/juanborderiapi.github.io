@@ -3,7 +3,7 @@ const projects = [
     { id: 'ILr6aVEausI', title: 'Producción Audiovisual Completa', role: 'Grabación, edición y producción', category: 'produccion', platform: 'youtube' },
 
     { id: 'lZiSt-EwxYI', title: 'Vídeo Institucional RC', role: 'Grabación, edición y producción', category: 'produccion', platform: 'youtube' },
-    { id: 'D3cMDm1j9wY', title: 'Proyecto Audiovisual Propio', role: 'Creación completa del vídeo', category: 'produccion', platform: 'youtube' },
+    { id: 'D3cMDm1j9wY', title: 'Proyecto Audiovisual Propio', role: 'Grabación, edición y producción', category: 'produccion', platform: 'youtube' },
 
 
     // === EDICIÓN ===
