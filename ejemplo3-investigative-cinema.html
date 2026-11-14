@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Bordería Pi — Ejemplo 3: The Investigative Documentalist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/investigative-cinema.css">
+</head>
+<body class="investigative-cinema">
+
+<!-- FILM GRAIN OVERLAY -->
+<div class="film-grain-layer" id="film-grain-layer"></div>
+
+<!-- DEMO SWITCHER BANNER -->
+<aside style="background: rgba(12, 15, 20, 0.95); border-bottom: 1px solid var(--accent); padding: 8px 16px; font-family: var(--font-mono); font-size: 11px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10000; backdrop-filter: blur(8px);">
+    <div>
+        <span style="color: var(--accent); font-weight: 700;">PROTOTIPO 03:</span> THE INVESTIGATIVE DOCUMENTALIST (Criterion Film Noir · Ámbar & Hueso · Waveform Player · Reader Drawer)
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+        <button class="grain-toggle-btn" id="toggle-grain-btn">🎞️ Grano: ON</button>
+        <a href="ejemplos.html" style="color: var(--text-secondary); text-decoration: underline;">← Volver al Comparador</a>
+        <a href="ejemplo1-director-suite.html" style="background: rgba(229, 169, 60, 0.15); color: var(--accent); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--accent);">Ver Ejemplo 1 →</a>
+    </div>
+</aside>
+
+<nav class="navbar" style="top: 37px;">
+    <div class="container">
+        <a href="#" class="nav-logo" style="font-family: var(--font-heading); font-size: 20px;">J<span>.</span>Bordería</a>
+        <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+        <ul class="nav-links">
+            <li><a href="#portfolio">Filmografía</a></li>
+            <li><a href="#periodismo">Investigación</a></li>
+            <li><a href="#proyecto">Proyecto Estrella</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero" id="inicio" style="padding-top: 130px;">
+    <div class="container hero-layout">
+        <div class="hero-content">
+            <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                <span class="editorial-stamp">DOSSIER DOCUMENTAL</span>
+                <span class="editorial-stamp" style="border-color: var(--border-paper); color: var(--text-secondary);">EDICIÓN & PERIODISMO</span>
+            </div>
+            <p class="hero-greeting" style="font-family: var(--font-heading); font-style: italic; color: var(--accent); font-size: 18px;">Crónica Visual & Narrativa Sonora</p>
+            <h1 class="hero-name" style="font-family: var(--font-heading); font-weight: 900; font-size: 56px; line-height: 1.05;">Juan<br>Bordería Pi</h1>
+            <p class="hero-title" style="color: var(--text-primary); font-family: var(--font-mono); font-size: 14px;">Periodista · Comunicador Audiovisual · Editor de Montaje</p>
+            <p class="hero-bio">
+                Rigor informativo y lenguaje cinematográfico: investigación de fuentes, montaje documental multicámara en Premiere Pro y locución radiofónica para proyectos institucionales y transmedia.
+            </p>
+            <div class="hero-ctas">
+                <a href="#periodismo" class="btn btn-primary" style="background: var(--accent); color: #0C0F14; border-color: var(--accent);">
+                    📖 Explorar Investigaciones
+                </a>
+                <a href="#portfolio" class="btn" style="border: 1px solid var(--border); color: var(--text-primary); margin-left: 12px;">
+                    ▶ Ver Filmografía
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/img/foto_perfil.jpg" alt="Retrato Juan Bordería Pi" style="border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.7); filter: grayscale(15%) contrast(105%);">
+        </div>
+    </div>
+</section>
+
+<!-- AUDIO WAVEFORM PLAYER SECTION -->
+<div class="container">
+    <div class="audio-waveform-player">
+        <div class="player-header">
+            <div>
+                <span class="editorial-stamp" style="font-size: 9px; margin-bottom: 4px;">CABINA DE RADIO UFV</span>
+                <div class="player-title">Corte de Voz: Directo Especial Elecciones 28M · Mirada 21</div>
+            </div>
+            <div class="audio-time-counter" id="wave-timer">00:00 / 02:45</div>
+        </div>
+        <div class="player-controls">
+            <button class="play-toggle-btn" id="wave-play-btn" aria-label="Reproducir corte">▶</button>
+            <div class="waveform-canvas-box" id="waveform-bars">
+                <!-- Barras generadas por JS -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="portfolio">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">01 / Catálogo Visual</p>
+            <h2 class="section-title">Filmografía & Cortes de Montaje</h2>
+            <p class="section-subtitle">Obras seleccionadas por responsabilidad técnica y narrativa.</p>
+        </div>
+
+        <div class="highlights-grid">
+            <article class="highlight-card" data-id="N5Byr2mOn-g" data-platform="youtube" style="border-radius: var(--radius); border-color: var(--border);">
+                <div class="highlight-thumb">
+                    <img src="https://img.youtube.com/vi/N5Byr2mOn-g/maxresdefault.jpg" alt="Padre Daniel" loading="lazy" onerror="this.src='https://img.youtube.com/vi/N5Byr2mOn-g/hqdefault.jpg'">
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="highlight-info">
+                    <span class="editorial-stamp" style="font-size: 9px; margin-bottom: 8px;">ENTREVISTA DOCUMENTAL</span>
+                    <div class="video-title">Padre Daniel: «El Señor no quiere superhéroes»</div>
+                    <div class="video-role">Regnum Christi España · Grabación, edición y producción</div>
+                </div>
+            </article>
+
+            <article class="highlight-card" data-id="mtowqpWHopw" data-platform="youtube" style="border-radius: var(--radius); border-color: var(--border);">
+                <div class="highlight-thumb">
+                    <img src="https://img.youtube.com/vi/mtowqpWHopw/maxresdefault.jpg" alt="Proyecto Promoción" loading="lazy" onerror="this.src='https://img.youtube.com/vi/mtowqpWHopw/hqdefault.jpg'">
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="highlight-info">
+                    <span class="editorial-stamp" style="font-size: 9px; margin-bottom: 8px;">CAMPAÑA AUDIOVISUAL</span>
+                    <div class="video-title">Proyecto Audiovisual de Promoción</div>
+                    <div class="video-role">Producción audiovisual · Creación y montaje</div>
+                </div>
+            </article>
+
+            <article class="highlight-card" data-id="NlhGJHQ6JOU" data-platform="youtube" style="border-radius: var(--radius); border-color: var(--border);">
+                <div class="highlight-thumb">
+                    <img src="https://img.youtube.com/vi/NlhGJHQ6JOU/maxresdefault.jpg" alt="Cristo Rey" loading="lazy" onerror="this.src='https://img.youtube.com/vi/NlhGJHQ6JOU/hqdefault.jpg'">
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="highlight-info">
+                    <span class="editorial-stamp" style="font-size: 9px; margin-bottom: 8px;">MEMORIA HISTÓRICA</span>
+                    <div class="video-title">Cristo Rey: Centenario 1925–2025</div>
+                    <div class="video-role">Regnum Christi España · Edición y postproducción</div>
+                </div>
+            </article>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="todos">Todos los Cortes</button>
+            <button class="filter-btn" data-filter="produccion">🎬 Producción Propia</button>
+            <button class="filter-btn" data-filter="edicion">✂️ Edición Premiere</button>
+            <button class="filter-btn" data-filter="locucion">🎤 Locución & Radio</button>
+            <button class="filter-btn" data-filter="rrss">📱 Redes Sociales</button>
+            <button class="filter-btn" data-filter="periodismo">✍️ Prensa Escrita</button>
+        </div>
+
+        <div class="video-grid" id="video-grid">
+            <!-- Poblado dinámicamente por js/main.js -->
+        </div>
+    </div>
+</section>
+
+<section id="periodismo" class="editorial-section">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">02 / Periodismo de Investigación</p>
+            <h2 class="section-title">Crónicas, Reportajes & Dossiers</h2>
+            <p class="section-subtitle">Prensa escrita, gestión de fuentes y publicación en WordPress bajo criterios SEO.</p>
+        </div>
+
+        <div class="editorial-layout">
+            <!-- Reportaje TDAH Feature con opción de vista rápida (Drawer) -->
+            <article class="editorial-feature" style="border-radius: var(--radius); border: 1px solid var(--border);">
+                <div class="editorial-feature-media">
+                    <a href="assets/docs/reportaje_tdah_crisis_concerta.pdf" target="_blank" rel="noopener noreferrer" class="dossier-preview-link">
+                        <img src="assets/img/reportaje_tdah_portada.jpg" alt="Portada Crisis del Concerta" loading="lazy">
+                        <span class="dossier-badge-overlay" style="background: rgba(12, 15, 20, 0.95); border: 1px solid var(--accent); color: var(--accent);">Dossier Maquetado InDesign</span>
+                    </a>
+                </div>
+                <div class="editorial-feature-body" style="padding: 36px;">
+                    <div class="editorial-meta-header">
+                        <span class="editorial-stamp">INVESTIGACIÓN DE FUENTES</span>
+                        <span class="editorial-tag">Periodismo de Fuente · UFV</span>
+                    </div>
+                    <h3 class="editorial-title" style="font-size: 28px;">Crisis del Concerta: «Tienes que volver a la casilla cero»</h3>
+                    <p class="editorial-lead">
+                        Investigación sobre el desabastecimiento crónico de metilfenidato (Concerta) y el impacto directo en pacientes con TDAH y sus familias.
+                    </p>
+                    <p class="editorial-desc">
+                        A través de testimonios directos de pacientes y familiares, fuentes sanitarias y análisis de alternativas farmacológicas, el reportaje documenta los efectos adversos de los fármacos sustitutivos y la desprotección clínica.
+                    </p>
+                    <div class="editorial-actions" style="display: flex; gap: 12px; margin-top: 24px;">
+                        <button class="btn open-reader-drawer" style="background: rgba(229,169,60,0.15); color: var(--accent); border: 1px solid var(--accent); cursor: pointer;">
+                            📖 Vista Rápida del Dossier
+                        </button>
+                        <a href="assets/docs/reportaje_tdah_crisis_concerta.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--accent); color: #0C0F14; border-color: var(--accent);">
+                            Descargar PDF Completo
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Mirada 21 Newsroom -->
+            <article class="editorial-newsroom" style="padding: 36px; margin-top: 32px; border-radius: var(--radius); border: 1px solid var(--border);">
+                <div class="newsroom-header">
+                    <div class="newsroom-brand">
+                        <div class="newsroom-avatar" style="background: var(--accent); color: #0C0F14; font-family: var(--font-heading); font-weight: 900;">M21</div>
+                        <div>
+                            <span class="editorial-badge" style="background: rgba(229, 169, 60, 0.15); color: var(--accent); border: 1px solid rgba(229, 169, 60, 0.3);">Redacción Web & SEO</span>
+                            <span class="editorial-tag">2022–2024</span>
+                        </div>
+                    </div>
+                    <h3 class="newsroom-title">Mirada 21 — Medios Universitarios UFV</h3>
+                    <p class="newsroom-summary">
+                        Redacción periodística, curación informativa y publicación directa en WordPress con criterios SEO y directos de radio.
+                    </p>
+                </div>
+
+                <div class="newsroom-publications" style="margin-top: 28px;">
+                    <div class="publications-grid">
+                        <a href="assets/docs/mirada21_precio_alimentos.pdf" target="_blank" rel="noopener noreferrer" class="publication-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-paper);">
+                            <div class="pub-badge" style="color: var(--accent);">Economía · Actualidad</div>
+                            <div class="pub-title">La cesta de la compra lleva 25 meses de subidas</div>
+                            <div class="pub-desc">Análisis de la inflación en alimentos con fuentes de Banco de España e INE.</div>
+                            <div class="pub-action" style="color: var(--accent);"><span>Leer (PDF)</span> →</div>
+                        </a>
+                        <a href="assets/docs/mirada21_the_body_fest.pdf" target="_blank" rel="noopener noreferrer" class="publication-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-paper);">
+                            <div class="pub-badge" style="color: var(--accent);">Cultura · Universidad</div>
+                            <div class="pub-title">The Body Fest: Teología del Cuerpo en la UFV</div>
+                            <div class="pub-desc">Crónica periodística sobre el festival universitario con 1.300 asistentes.</div>
+                            <div class="pub-action" style="color: var(--accent);"><span>Leer (PDF)</span> →</div>
+                        </a>
+                        <a href="assets/docs/mirada21_domund.pdf" target="_blank" rel="noopener noreferrer" class="publication-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-paper);">
+                            <div class="pub-badge" style="color: var(--accent);">Sociedad · Reportaje</div>
+                            <div class="pub-title">DOMUND: «Corazones fervientes, pies en camino»</div>
+                            <div class="pub-desc">Cobertura sobre la misión y la Jornada Mundial de las Misiones.</div>
+                            <div class="pub-action" style="color: var(--accent);"><span>Leer (PDF)</span> →</div>
+                        </a>
+                        <a href="assets/docs/mirada21_elecciones_28m.pdf" target="_blank" rel="noopener noreferrer" class="publication-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-paper);">
+                            <div class="pub-badge" style="color: var(--accent);">Radio · Directo 28M</div>
+                            <div class="pub-title">Elecciones 28M: Guion y Directo de Radio</div>
+                            <div class="pub-desc">Escaleta técnica y seguimiento en directo de comicios electorales.</div>
+                            <div class="pub-action" style="color: var(--accent);"><span>Leer (PDF)</span> →</div>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="proyecto">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">03 / Obra Transmedia</p>
+            <h2 class="section-title">La Capital del Arte</h2>
+            <p class="section-subtitle">Ecosistema transmedia del que soy cámara y montador principal.</p>
+        </div>
+
+        <div class="featured-project" style="padding: 32px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-card);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center;">
+                <div class="featured-text">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <img src="assets/img/logo_capital.jpg" alt="Logo La Capital del Arte" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);">
+                        <span class="editorial-stamp">2025–2026</span>
+                    </div>
+                    <h3>Cámara, Montaje y Producción Técnica</h3>
+                    <p>
+                        Ecosistema transmedia distribuido en YouTube, Spotify, Instagram y TikTok. Operador de cámara en localizaciones culturales, montaje multicámara y optimización para redes.
+                    </p>
+                    <div class="featured-links">
+                        <a href="https://www.youtube.com/@LaCapitaldelArte" target="_blank" class="featured-link primary" style="background: var(--accent); color: #0C0F14; border-color: var(--accent);">▶ YouTube</a>
+                        <a href="https://open.spotify.com/show/0pJZm4Nxr27bovKG4nvPPd" target="_blank" class="featured-link primary" style="background: rgba(229,169,60,0.15); color: var(--accent); border-color: var(--accent);">🎧 Spotify</a>
+                        <a href="https://instagram.com/lacapitaldelarte" target="_blank" class="featured-link primary" style="background: rgba(229,169,60,0.15); color: var(--accent); border-color: var(--accent);">📷 Instagram</a>
+                        <a href="https://www.tiktok.com/@lacapitaldelarte_" target="_blank" class="featured-link secondary">🎵 TikTok</a>
+                    </div>
+                </div>
+                <div class="featured-visual">
+                    <iframe src="https://www.youtube.com/embed/D-nRNI7TOkA?rel=0" title="La Capital del Arte" style="width: 100%; aspect-ratio: 16/9; border: none; border-radius: var(--radius-sm); box-shadow: 0 10px 30px rgba(0,0,0,0.5);" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">04 / Mesa de Redacción</p>
+            <h2 class="section-title">¿Hablamos?</h2>
+        </div>
+        <div class="contact-grid">
+            <a href="mailto:jborderiapi@gmail.com" class="contact-card" style="border: 1px solid var(--border); border-radius: var(--radius-sm);">
+                <span class="icon">✉️</span>
+                <div>
+                    <div class="label" style="font-family: var(--font-mono); font-size: 11px;">Email</div>
+                    <div class="value">jborderiapi@gmail.com</div>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/juan-javier-border%C3%ADa-pi-/" target="_blank" class="contact-card" style="border: 1px solid var(--border); border-radius: var(--radius-sm);">
+                <span class="icon">🔗</span>
+                <div>
+                    <div class="label" style="font-family: var(--font-mono); font-size: 11px;">LinkedIn</div>
+                    <div class="value">Juan Bordería Pi</div>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/juanborderiapi/" target="_blank" class="contact-card" style="border: 1px solid var(--border); border-radius: var(--radius-sm);">
+                <span class="icon">📷</span>
+                <div>
+                    <div class="label" style="font-family: var(--font-mono); font-size: 11px;">Instagram</div>
+                    <div class="value">@juanborderiapi</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SLIDE-OVER READER DRAWER FOR TDAH REPORT -->
+<div class="reader-drawer-overlay" id="reader-drawer-overlay">
+    <div class="reader-drawer">
+        <button class="drawer-close-btn" id="drawer-close-btn">✕ Cerrar Vista Rápida [Esc]</button>
+        <span class="editorial-stamp">DOSSIER PERIODÍSTICO EN PROFUNDIDAD</span>
+        <h2 style="font-family: var(--font-heading); font-size: 28px; color: var(--accent);">Crisis del Concerta: «Tienes que volver a la casilla cero»</h2>
+        <div class="drawer-pullquote">
+            «El desabastecimiento en farmacias obliga a los pacientes con TDAH a rotar entre fármacos sustitutivos con cuadros secundarios severos».
+        </div>
+        <p style="color: var(--text-secondary); line-height: 1.7;">
+            Este trabajo de investigación periodística analiza las causas y consecuencias del desabastecimiento de metilfenidato prolongado en España durante 2023 y 2024. Recoge testimonios directos de personas diagnosticadas, farmacéuticos y médicos especialistas en neuropsiquiatría.
+        </p>
+        <div style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px; border-radius: 6px;">
+            <h4 style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-bottom: 8px;">FICHA TÉCNICA EDITORIAL</h4>
+            <ul style="list-style: none; font-size: 13px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 6px;">
+                <li>• <strong>Asignatura:</strong> Periodismo de Fuente y Reporterismo (UFV)</li>
+                <li>• <strong>Herramienta de maquetación:</strong> Adobe InDesign</li>
+                <li>• <strong>Fuentes consultadas:</strong> AEMPS, farmacias comunitarias, testimonios clínicos</li>
+                <li>• <strong>Extensión:</strong> Reportaje a doble página maquetada con infografía</li>
+            </ul>
+        </div>
+        <div>
+            <a href="assets/docs/reportaje_tdah_crisis_concerta.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--accent); color: #0C0F14; border-color: var(--accent); display: inline-block;">
+                Descargar Documento Original Completo (PDF)
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Juan Bordería Pi — Periodista & Comunicador Audiovisual</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-content" id="modal-content"></div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/investigative-cinema.js"></script>
+</body>
+</html>

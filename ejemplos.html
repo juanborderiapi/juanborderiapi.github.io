@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador Interactivo de Diseños — Portfolio Juan Bordería Pi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-hub: #080B10;
+            --bg-surface: #101622;
+            --bg-surface-hover: #172134;
+            --accent: #C8A96E;
+            --accent-cyan: #38BDF8;
+            --accent-amber: #E5A93C;
+            --text-main: #F8FAFC;
+            --text-dim: #94A3B8;
+            --border: rgba(255, 255, 255, 0.1);
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-hub);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- TOP CONTROL HEADER --- */
+        .hub-header {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+
+        .hub-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hub-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            background: rgba(200, 169, 110, 0.15);
+            color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(200, 169, 110, 0.3);
+            text-transform: uppercase;
+        }
+
+        .hub-title {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        /* TAB SELECTOR */
+        .hub-tabs {
+            display: flex;
+            background: #080B10;
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            gap: 4px;
+        }
+
+        .hub-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hub-tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .hub-tab-btn.active {
+            background: var(--bg-surface-hover);
+            color: #FFFFFF;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hub-tab-btn.tab-1.active { border-left: 3px solid var(--accent); }
+        .hub-tab-btn.tab-2.active { border-left: 3px solid var(--accent-cyan); }
+        .hub-tab-btn.tab-3.active { border-left: 3px solid var(--accent-amber); }
+
+        /* DEVICE CONTROLS */
+        .hub-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .device-selector {
+            display: flex;
+            background: #080B10;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2px;
+        }
+
+        .device-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.15s ease;
+        }
+
+        .device-btn:hover { color: var(--text-main); }
+        .device-btn.active { background: var(--bg-surface-hover); color: #FFF; }
+
+        .fullscreen-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            padding: 7px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .fullscreen-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* --- MAIN STAGE & IFRAME --- */
+        .hub-stage {
+            flex-grow: 1;
+            background: #05070A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 16px 0;
+        }
+
+        .iframe-wrapper {
+            height: 100%;
+            width: 100%;
+            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
+            display: flex;
+            justify-content: center;
+        }
+
+        .iframe-wrapper.desktop { width: 100%; }
+        .iframe-wrapper.tablet { width: 1024px; box-shadow: 0 0 50px rgba(0, 0, 0, 0.8); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .iframe-wrapper.mobile { width: 390px; height: 95%; box-shadow: 0 0 50px rgba(0, 0, 0, 0.9); border: 2px solid #2D3748; border-radius: 36px; overflow: hidden; }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #07090E;
+        }
+
+        /* --- BOTTOM QUICK COMPARISON BAR --- */
+        .hub-footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            padding: 10px 24px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-dim);
+            flex-shrink: 0;
+        }
+
+        .hub-features-pill {
+            display: flex;
+            gap: 12px;
+        }
+
+        .hub-pill {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+<header class="hub-header">
+    <div class="hub-brand">
+        <span class="hub-badge">Laboratorio Creativo</span>
+        <div class="hub-title">Portfolio Juan Bordería Pi · 3 Direcciones de Diseño</div>
+    </div>
+
+    <!-- TABS -->
+    <nav class="hub-tabs">
+        <button class="hub-tab-btn tab-1 active" data-src="ejemplo1-director-suite.html" data-name="The Director's Suite" data-color="var(--accent)" data-features="Obsidian OLED · Oro Champán · Cursor Lente · HUD Timecode · Spotlight Cards">
+            <span>🎬</span> 01. Director's Suite
+        </button>
+        <button class="hub-tab-btn tab-2" data-src="ejemplo2-kinetic-transmedia.html" data-name="Kinetic Post-Production" data-color="var(--accent-cyan)" data-features="Apple Pro / Linear · Azul Eléctrico · Timeline Tracks · VU Meter · Playhead Scrub">
+            <span>⚡</span> 02. Kinetic Studio
+        </button>
+        <button class="hub-tab-btn tab-3" data-src="ejemplo3-investigative-cinema.html" data-name="The Investigative Documentalist" data-color="var(--accent-amber)" data-features="Criterion Film Noir · Ámbar & Hueso · Waveform Player · Reader Drawer · Grano 35mm">
+            <span>📰</span> 03. Documentalist
+        </button>
+    </nav>
+
+    <!-- DEVICE & ACTIONS -->
+    <div class="hub-actions">
+        <div class="device-selector">
+            <button class="device-btn active" data-device="desktop" title="Escritorio (100%)">🖥️</button>
+            <button class="device-btn" data-device="tablet" title="Tableta (1024px)">💻</button>
+            <button class="device-btn" data-device="mobile" title="Móvil (390px)">📱</button>
+        </div>
+        <a href="ejemplo1-director-suite.html" target="_blank" class="fullscreen-link" id="ext-link">
+            Abrir en pestaña nueva ↗
+        </a>
+    </div>
+</header>
+
+<main class="hub-stage">
+    <div class="iframe-wrapper desktop" id="iframe-box">
+        <iframe src="ejemplo1-director-suite.html" id="preview-frame" title="Vista previa interactiva"></iframe>
+    </div>
+</main>
+
+<footer class="hub-footer">
+    <div id="footer-desc">
+        <strong id="footer-title" style="color: var(--accent);">01. The Director's Suite:</strong> 
+        <span id="footer-features">Obsidian OLED · Oro Champán · Cursor Lente · HUD Timecode · Spotlight Cards</span>
+    </div>
+    <div style="display: flex; gap: 16px;">
+        <span>Despliegue nativo sin npm</span>
+        <span>WCAG AA 4.5:1</span>
+        <span>60 fps GPU</span>
+    </div>
+</footer>
+
+<script>
+    const tabs = document.querySelectorAll('.hub-tab-btn');
+    const iframe = document.getElementById('preview-frame');
+    const iframeBox = document.getElementById('iframe-box');
+    const extLink = document.getElementById('ext-link');
+    const footerTitle = document.getElementById('footer-title');
+    const footerFeatures = document.getElementById('footer-features');
+    const deviceBtns = document.querySelectorAll('.device-btn');
+
+    // Switch Tabs
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const src = tab.dataset.src;
+            iframe.src = src;
+            extLink.href = src;
+
+            footerTitle.textContent = tab.dataset.name + ':';
+            footerTitle.style.color = tab.dataset.color;
+            footerFeatures.textContent = tab.dataset.features;
+        });
+    });
+
+    // Switch Devices
+    deviceBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            deviceBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const device = btn.dataset.device;
+            iframeBox.className = `iframe-wrapper ${device}`;
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,321 @@
+/* ==============================================================
+   EJEMPLO 1: THE DIRECTOR'S SUITE
+   Estética: Obsidian OLED, Champagne Gold, Cinema Atmosphere
+   ============================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --bg-primary: #07090E;
+    --bg-secondary: #0D121D;
+    --bg-card: #121826;
+    --bg-card-hover: #172033;
+    --accent: #C8A96E;
+    --accent-light: #F0DFC0;
+    --accent-glow: rgba(200, 169, 110, 0.25);
+    --accent-dim: rgba(200, 169, 110, 0.12);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border: rgba(200, 169, 110, 0.16);
+    --border-highlight: rgba(200, 169, 110, 0.65);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Body with Cinema Dark */
+body.director-suite {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    position: relative;
+    cursor: default;
+}
+
+/* Subtle Ambient Gradient in Background */
+body.director-suite::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    height: 600px;
+    background: radial-gradient(circle at center, rgba(200, 169, 110, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --- CUSTOM MAGNETIC LENS CURSOR --- */
+.cinema-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+}
+
+.cinema-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease-out, width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s, border-color 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(200, 169, 110, 0.15);
+}
+
+.cinema-cursor-ring span {
+    display: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #07090E;
+    text-transform: uppercase;
+}
+
+.cinema-cursor-ring.hovering-card {
+    width: 105px;
+    height: 38px;
+    background-color: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 25px rgba(200, 169, 110, 0.45);
+}
+
+.cinema-cursor-ring.hovering-card span {
+    display: block;
+}
+
+.cinema-cursor-ring.hovering-link {
+    width: 52px;
+    height: 52px;
+    background-color: rgba(200, 169, 110, 0.15);
+    border-color: var(--accent-light);
+}
+
+/* Disable custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .cinema-cursor-dot, .cinema-cursor-ring { display: none !important; }
+}
+
+/* --- CINEMA HUD HEADER & TIMECODE --- */
+.cinema-hud-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(13, 18, 29, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    margin-bottom: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    max-width: 520px;
+}
+
+.hud-rec {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #EF4444;
+    font-weight: 700;
+}
+
+.hud-rec-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 8px #EF4444;
+    animation: blinkRec 1.2s infinite ease-in-out;
+}
+
+@keyframes blinkRec {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+.hud-timecode {
+    color: var(--accent-light);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+}
+
+.hud-format {
+    background: rgba(200, 169, 110, 0.12);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(200, 169, 110, 0.25);
+}
+
+/* --- KINETIC MARQUEE STRIP --- */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #07090E 0%, #101624 50%, #07090E 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    margin: 40px 0 60px 0;
+    display: flex;
+    position: relative;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, #07090E, transparent);
+}
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, #07090E, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-item {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.marquee-item::after {
+    content: '✦';
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- SPOTLIGHT CARD EFFECT (CSS + JS VARIABLES) --- */
+.spotlight-card {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1px; /* border thickness */
+    overflow: hidden;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(200, 169, 110, 0.45),
+        transparent 65%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 1;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+.spotlight-inner {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: calc(var(--radius) - 1px);
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.spotlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(200, 169, 110, 0.1);
+}
+
+/* --- AMBILIGHT MODAL GLOW --- */
+.ambilight-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+}
+
+.ambilight-glow {
+    position: absolute;
+    inset: -30px;
+    background: radial-gradient(circle, rgba(200, 169, 110, 0.35) 0%, rgba(200, 169, 110, 0.1) 40%, transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.85;
+    animation: ambilightPulse 4s infinite alternate ease-in-out;
+}
+
+@keyframes ambilightPulse {
+    0% { transform: scale(0.98); opacity: 0.65; }
+    100% { transform: scale(1.04); opacity: 0.95; }
+}
+
+/* Tactile Button Press */
+.btn:active, .filter-btn:active, .contact-card:active {
+    transform: scale(0.97) !important;
+}
+
+/* Accessibility: respect user prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none !important; }
+    .hud-rec-dot { animation: none !important; }
+    .ambilight-glow { animation: none !important; }
+    .spotlight-card { transition: none !important; }
+}

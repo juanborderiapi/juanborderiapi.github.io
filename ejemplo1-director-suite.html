@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Bordería Pi — Ejemplo 1: The Director's Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/director-suite.css">
+</head>
+<body class="director-suite">
+
+<!-- DEMO SWITCHER BANNER -->
+<aside style="background: rgba(13, 18, 29, 0.95); border-bottom: 1px solid var(--accent); padding: 8px 16px; font-family: var(--font-mono); font-size: 11px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10000; backdrop-filter: blur(8px);">
+    <div>
+        <span style="color: var(--accent); font-weight: 700;">PROTOTIPO 01:</span> THE DIRECTOR'S SUITE (Obsidian OLED · Oro Champán · Cursor Lente · HUD Timecode)
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="ejemplos.html" style="color: var(--text-secondary); text-decoration: underline;">← Volver al Comparador</a>
+        <a href="ejemplo2-kinetic-transmedia.html" style="background: rgba(200,169,110,0.15); color: var(--accent); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--accent);">Ver Ejemplo 2 →</a>
+    </div>
+</aside>
+
+<nav class="navbar" style="top: 37px;">
+    <div class="container">
+        <a href="#" class="nav-logo">J<span>.</span>Bordería</a>
+        <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+        <ul class="nav-links">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#periodismo">Periodismo</a></li>
+            <li><a href="#proyecto">Proyecto Estrella</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero" id="inicio" style="padding-top: 130px;">
+    <div class="container hero-layout">
+        <div class="hero-content">
+            <!-- CINEMA HUD BAR -->
+            <div class="cinema-hud-bar">
+                <div class="hud-rec">
+                    <span class="hud-rec-dot"></span>
+                    <span>REC ● MONTAJE</span>
+                </div>
+                <div class="hud-timecode" id="hero-timecode">00:01:24:18</div>
+                <div class="hud-format">4K PRORES 422</div>
+            </div>
+
+            <p class="hero-greeting">Portfolio Audiovisual & Periodismo</p>
+            <h1 class="hero-name">Juan<br>Bordería Pi</h1>
+            <p class="hero-title">Periodista · Comunicador Audiovisual · Editor</p>
+            <p class="hero-bio">
+                Producción audiovisual integral para organizaciones de primer nivel: desde la grabación y edición multicámara en Premiere Pro hasta la locución profesional y la optimización de contenidos transmedia para YouTube e Instagram.
+            </p>
+            <div class="hero-ctas">
+                <a href="#portfolio" class="btn btn-primary">▶ Ver Trabajos Seleccionados</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/img/foto_perfil.jpg" alt="Retrato Juan Bordería Pi" style="border: 2px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+        </div>
+    </div>
+
+    <!-- KINETIC MARQUEE STRIP -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <span class="marquee-item">Edición Multicámara Premiere Pro</span>
+            <span class="marquee-item">Color Grading Lumetri</span>
+            <span class="marquee-item">Locución & Voz en Off</span>
+            <span class="marquee-item">Periodismo de Investigación</span>
+            <span class="marquee-item">Curación SEO & WordPress</span>
+            <span class="marquee-item">Producción Transmedia</span>
+            <span class="marquee-item">After Effects & Motion Graphics</span>
+            <!-- Duplicado para loop continuo -->
+            <span class="marquee-item">Edición Multicámara Premiere Pro</span>
+            <span class="marquee-item">Color Grading Lumetri</span>
+            <span class="marquee-item">Locución & Voz en Off</span>
+            <span class="marquee-item">Periodismo de Investigación</span>
+            <span class="marquee-item">Curación SEO & WordPress</span>
+            <span class="marquee-item">Producción Transmedia</span>
+            <span class="marquee-item">After Effects & Motion Graphics</span>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">01 / Archivo Seleccionado</p>
+            <h2 class="section-title">Trabajos Audiovisuales Destacados</h2>
+            <p class="section-subtitle">Pasa el cursor sobre cada corte para activar el visor óptico.</p>
+        </div>
+
+        <div class="highlights-grid">
+            <article class="highlight-card spotlight-card" data-id="N5Byr2mOn-g" data-platform="youtube">
+                <div class="spotlight-inner">
+                    <div class="highlight-thumb">
+                        <img src="https://img.youtube.com/vi/N5Byr2mOn-g/maxresdefault.jpg" alt="Padre Daniel: «El Señor no quiere superhéroes»" loading="lazy" onerror="this.src='https://img.youtube.com/vi/N5Byr2mOn-g/hqdefault.jpg'">
+                        <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="highlight-info">
+                        <div class="video-title">Padre Daniel: «El Señor no quiere superhéroes»</div>
+                        <div class="video-role">Regnum Christi España · Grabación, edición y producción</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="highlight-card spotlight-card" data-id="mtowqpWHopw" data-platform="youtube">
+                <div class="spotlight-inner">
+                    <div class="highlight-thumb">
+                        <img src="https://img.youtube.com/vi/mtowqpWHopw/maxresdefault.jpg" alt="Proyecto Audiovisual de Promoción" loading="lazy" onerror="this.src='https://img.youtube.com/vi/mtowqpWHopw/hqdefault.jpg'">
+                        <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="highlight-info">
+                        <div class="video-title">Proyecto Audiovisual de Promoción</div>
+                        <div class="video-role">Producción audiovisual · Creación y montaje</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="highlight-card spotlight-card" data-id="NlhGJHQ6JOU" data-platform="youtube">
+                <div class="spotlight-inner">
+                    <div class="highlight-thumb">
+                        <img src="https://img.youtube.com/vi/NlhGJHQ6JOU/maxresdefault.jpg" alt="Cristo Rey: Centenario 1925–2025" loading="lazy" onerror="this.src='https://img.youtube.com/vi/NlhGJHQ6JOU/hqdefault.jpg'">
+                        <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                    <div class="highlight-info">
+                        <div class="video-title">Cristo Rey: Centenario 1925–2025</div>
+                        <div class="video-role">Regnum Christi España · Edición y postproducción</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="produccion">🎬 Producción Propia</button>
+            <button class="filter-btn" data-filter="edicion">✂️ Edición</button>
+            <button class="filter-btn" data-filter="locucion">🎤 Locución</button>
+            <button class="filter-btn" data-filter="rrss">📱 RRSS</button>
+            <button class="filter-btn" data-filter="periodismo">✍️ Prensa & Reportajes</button>
+        </div>
+
+        <div class="video-grid" id="video-grid">
+            <!-- Poblado dinámicamente por js/main.js -->
+        </div>
+    </div>
+</section>
+
+<section id="periodismo" class="editorial-section">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">02 / Prensa & Publicaciones</p>
+            <h2 class="section-title">Investigación Periodística & Medios Digitales</h2>
+            <p class="section-subtitle">Investigación en profundidad, curación informativa y gestión editorial WordPress bajo criterios SEO.</p>
+        </div>
+
+        <div class="editorial-layout">
+            <!-- Bloque 1: Reportaje TDAH -->
+            <article class="editorial-feature spotlight-card" style="padding: 1px;">
+                <div class="spotlight-inner" style="display: flex; flex-direction: column;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                        <div class="editorial-feature-media">
+                            <a href="assets/docs/reportaje_tdah_crisis_concerta.pdf" target="_blank" rel="noopener noreferrer" class="dossier-preview-link">
+                                <img src="assets/img/reportaje_tdah_portada.jpg" alt="Portada Crisis del Concerta" loading="lazy">
+                                <span class="dossier-badge-overlay">Investigación Periodística</span>
+                            </a>
+                        </div>
+                        <div class="editorial-feature-body" style="padding: 32px;">
+                            <div class="editorial-meta-header">
+                                <span class="editorial-badge">Reportaje en Profundidad</span>
+                                <span class="editorial-tag">Periodismo de Fuente · UFV</span>
+                            </div>
+                            <h3 class="editorial-title">Crisis del Concerta: «Tienes que volver a la casilla cero»</h3>
+                            <p class="editorial-lead">
+                                Investigación sobre el desabastecimiento crónico de metilfenidato (Concerta) y el impacto directo en pacientes con TDAH y sus familias.
+                            </p>
+                            <p class="editorial-desc">
+                                Fuentes sanitarias, testimonios de familias y análisis de fármacos sustitutivos. Maquetado íntegramente en Adobe InDesign en formato editorial impreso.
+                            </p>
+                            <div class="editorial-actions" style="margin-top: 24px;">
+                                <a href="assets/docs/reportaje_tdah_crisis_concerta.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                    Leer Reportaje Completo (PDF)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Bloque 2: Mirada 21 -->
+            <article class="editorial-newsroom spotlight-card" style="padding: 1px; margin-top: 32px;">
+                <div class="spotlight-inner" style="padding: 32px;">
+                    <div class="newsroom-header">
+                        <div class="newsroom-brand">
+                            <div class="newsroom-avatar">M21</div>
+                            <div>
+                                <span class="editorial-badge">Redacción Web, SEO & Radio</span>
+                                <span class="editorial-tag">2022–2024</span>
+                            </div>
+                        </div>
+                        <h3 class="newsroom-title">Mirada 21 — Medios Universitarios UFV</h3>
+                        <p class="newsroom-summary">
+                            Redacción periodística, curación informativa y publicación directa en gestor de contenidos WordPress con aplicación de criterios SEO y directos de radio.
+                        </p>
+                    </div>
+
+                    <div class="newsroom-publications" style="margin-top: 28px;">
+                        <div class="publications-grid">
+                            <a href="assets/docs/mirada21_precio_alimentos.pdf" target="_blank" rel="noopener noreferrer" class="publication-card">
+                                <div class="pub-badge">Economía · Actualidad</div>
+                                <div class="pub-title">La cesta de la compra lleva 25 meses de subidas</div>
+                                <div class="pub-desc">Análisis de la inflación en alimentos con datos del INE y Banco de España.</div>
+                                <div class="pub-action"><span>Leer noticia (PDF)</span> →</div>
+                            </a>
+                            <a href="assets/docs/mirada21_the_body_fest.pdf" target="_blank" rel="noopener noreferrer" class="publication-card">
+                                <div class="pub-badge">Cultura · Universidad</div>
+                                <div class="pub-title">The Body Fest: Teología del Cuerpo en la UFV</div>
+                                <div class="pub-desc">Crónica periodística sobre el festival universitario con más de 1.300 asistentes.</div>
+                                <div class="pub-action"><span>Leer crónica (PDF)</span> →</div>
+                            </a>
+                            <a href="assets/docs/mirada21_domund.pdf" target="_blank" rel="noopener noreferrer" class="publication-card">
+                                <div class="pub-badge">Sociedad · Reportaje</div>
+                                <div class="pub-title">DOMUND: «Corazones fervientes, pies en camino»</div>
+                                <div class="pub-desc">Cobertura sobre la misión y la Jornada Mundial de las Misiones.</div>
+                                <div class="pub-action"><span>Leer reportaje (PDF)</span> →</div>
+                            </a>
+                            <a href="assets/docs/mirada21_elecciones_28m.pdf" target="_blank" rel="noopener noreferrer" class="publication-card">
+                                <div class="pub-badge">Radio · Cobertura Especial</div>
+                                <div class="pub-title">Elecciones 28M: Guion y Directo de Radio</div>
+                                <div class="pub-desc">Escaleta técnica y seguimiento en directo de comicios electorales.</div>
+                                <div class="pub-action"><span>Ver guion radio (PDF)</span> →</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="proyecto">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">03 / Proyecto Insignia</p>
+            <h2 class="section-title">La Capital del Arte</h2>
+            <p class="section-subtitle">Ecosistema transmedia del que soy operador de cámara y montador principal.</p>
+        </div>
+
+        <div class="featured-project spotlight-card" style="padding: 1px;">
+            <div class="spotlight-inner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); padding: 32px; gap: 32px; align-items: center;">
+                <div class="featured-text">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <img src="assets/img/logo_capital.jpg" alt="Logo La Capital del Arte" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);">
+                        <span class="featured-tag">Transmedia · 2025–2026</span>
+                    </div>
+                    <h3>Cámara, Montaje y Producción Técnica</h3>
+                    <p>
+                        Contenido multiplataforma difundido en YouTube, Spotify, Instagram y TikTok. Operador de cámara, montaje de vídeo, mezcla de podcast y optimización de formatos cortos.
+                    </p>
+                    <div class="featured-links">
+                        <a href="https://www.youtube.com/@LaCapitaldelArte" target="_blank" class="featured-link primary">▶ YouTube</a>
+                        <a href="https://open.spotify.com/show/0pJZm4Nxr27bovKG4nvPPd" target="_blank" class="featured-link primary">🎧 Spotify</a>
+                        <a href="https://instagram.com/lacapitaldelarte" target="_blank" class="featured-link primary">📷 Instagram</a>
+                        <a href="https://www.tiktok.com/@lacapitaldelarte_" target="_blank" class="featured-link secondary">🎵 TikTok</a>
+                    </div>
+                </div>
+                <div class="featured-visual">
+                    <iframe src="https://www.youtube.com/embed/D-nRNI7TOkA?rel=0" title="La Capital del Arte" style="width: 100%; aspect-ratio: 16/9; border: none; border-radius: var(--radius-sm); box-shadow: 0 10px 30px rgba(0,0,0,0.5);" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label">04 / Contacto Directo</p>
+            <h2 class="section-title">¿Hablamos?</h2>
+        </div>
+        <div class="contact-grid">
+            <a href="mailto:jborderiapi@gmail.com" class="contact-card spotlight-card" style="padding: 1px;">
+                <div class="spotlight-inner" style="display: flex; align-items: center; gap: 16px; padding: 24px;">
+                    <span class="icon">✉️</span>
+                    <div>
+                        <div class="label">Email</div>
+                        <div class="value">jborderiapi@gmail.com</div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/juan-javier-border%C3%ADa-pi-/" target="_blank" class="contact-card spotlight-card" style="padding: 1px;">
+                <div class="spotlight-inner" style="display: flex; align-items: center; gap: 16px; padding: 24px;">
+                    <span class="icon">🔗</span>
+                    <div>
+                        <div class="label">LinkedIn</div>
+                        <div class="value">Juan Bordería Pi</div>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/juanborderiapi/" target="_blank" class="contact-card spotlight-card" style="padding: 1px;">
+                <div class="spotlight-inner" style="display: flex; align-items: center; gap: 16px; padding: 24px;">
+                    <span class="icon">📷</span>
+                    <div>
+                        <div class="label">Instagram</div>
+                        <div class="value">@juanborderiapi</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Juan Bordería Pi — Periodista & Comunicador Audiovisual</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-content" id="modal-content"></div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/director-suite.js"></script>
+</body>
+</html>

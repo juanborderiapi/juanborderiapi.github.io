@@ -1,0 +1,236 @@
+/* ==============================================================
+   EJEMPLO 3: THE INVESTIGATIVE DOCUMENTALIST
+   Estética: Broadsheet Editorial, Criterion Film Noir, Ambar & Hueso
+   ============================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --bg-primary: #0C0F14;
+    --bg-secondary: #131720;
+    --bg-card: #171D28;
+    --bg-card-hover: #1E2534;
+    --accent: #E5A93C;           /* Editorial Amber */
+    --accent-light: #F7E7C4;
+    --accent-glow: rgba(229, 169, 60, 0.22);
+    --text-primary: #F5EFEB;     /* Warm Bone White */
+    --text-secondary: #9DA6B8;
+    --text-muted: #657084;
+    --border: rgba(229, 169, 60, 0.2);
+    --border-paper: rgba(245, 239, 235, 0.12);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius: 8px;
+    --radius-sm: 4px;
+}
+
+body.investigative-cinema {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- SVG NOISE / FILM GRAIN OVERLAY --- */
+.film-grain-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    transition: opacity 0.3s ease;
+}
+
+.film-grain-layer.disabled {
+    opacity: 0;
+}
+
+/* Grain Toggle in Nav */
+.grain-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.grain-toggle-btn:hover {
+    background: rgba(229, 169, 60, 0.1);
+    border-color: var(--accent-light);
+}
+
+/* --- EDITORIAL STAMPS & SEALS --- */
+.editorial-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+/* --- INTERACTIVE AUDIO WAVEFORM PLAYER --- */
+.audio-waveform-player {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.play-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg-primary);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.play-toggle-btn:hover {
+    transform: scale(1.06);
+    background: var(--accent-light);
+}
+
+.waveform-canvas-box {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 40px;
+    flex-grow: 1;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.waveform-bar {
+    flex-grow: 1;
+    background: rgba(245, 239, 235, 0.2);
+    border-radius: 1px;
+    transition: background 0.15s ease, height 0.2s ease;
+}
+
+.waveform-bar.played {
+    background: var(--accent);
+}
+
+.audio-time-counter {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* --- SLIDE-OVER READER DRAWER --- */
+.reader-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 15, 20, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.reader-drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.reader-drawer {
+    width: 100%;
+    max-width: 650px;
+    height: 100%;
+    background: #11151F;
+    border-left: 1px solid var(--border);
+    padding: 40px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.reader-drawer-overlay.open .reader-drawer {
+    transform: translateX(0);
+}
+
+.drawer-close-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--border-paper);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.drawer-close-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent);
+}
+
+.drawer-pullquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.4;
+    margin: 16px 0;
+}
+
+/* Tactile Active Press */
+.btn:active, .filter-btn:active, .play-toggle-btn:active {
+    transform: scale(0.97) !important;
+}
