@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-hub: #080B10;
-            --bg-surface: #101622;
+            --bg-hub: #06080D;
+            --bg-surface: #0E131F;
             --bg-surface-hover: #172134;
             --accent: #C8A96E;
+            --accent-fire: #F59E0B;
             --accent-cyan: #38BDF8;
             --accent-amber: #E5A93C;
             --text-main: #F8FAFC;
@@ -42,7 +43,7 @@
         .hub-header {
             background: var(--bg-surface);
             border-bottom: 1px solid var(--border);
-            padding: 12px 24px;
+            padding: 10px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -70,7 +71,7 @@
         }
 
         .hub-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: -0.01em;
         }
@@ -78,7 +79,7 @@
         /* TAB SELECTOR */
         .hub-tabs {
             display: flex;
-            background: #080B10;
+            background: #06080D;
             padding: 4px;
             border-radius: 8px;
             border: 1px solid var(--border);
@@ -92,7 +93,7 @@
             font-family: var(--font-sans);
             font-size: 12px;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 7px 14px;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -113,6 +114,7 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
+        .hub-tab-btn.tab-rev.active { border-left: 3px solid var(--accent-fire); color: #FDE68A; }
         .hub-tab-btn.tab-1.active { border-left: 3px solid var(--accent); }
         .hub-tab-btn.tab-2.active { border-left: 3px solid var(--accent-cyan); }
         .hub-tab-btn.tab-3.active { border-left: 3px solid var(--accent-amber); }
@@ -126,7 +128,7 @@
 
         .device-selector {
             display: flex;
-            background: #080B10;
+            background: #06080D;
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 2px;
@@ -168,13 +170,13 @@
         /* --- MAIN STAGE & IFRAME --- */
         .hub-stage {
             flex-grow: 1;
-            background: #05070A;
+            background: #030407;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             position: relative;
-            padding: 16px 0;
+            padding: 12px 0;
         }
 
         .iframe-wrapper {
@@ -193,7 +195,7 @@
             width: 100%;
             height: 100%;
             border: none;
-            background: #07090E;
+            background: #06080D;
         }
 
         /* --- BOTTOM QUICK COMPARISON BAR --- */
@@ -209,18 +211,6 @@
             color: var(--text-dim);
             flex-shrink: 0;
         }
-
-        .hub-features-pill {
-            display: flex;
-            gap: 12px;
-        }
-
-        .hub-pill {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 8px;
-            border-radius: 4px;
-            color: var(--text-main);
-        }
     </style>
 </head>
 <body>
@@ -228,19 +218,22 @@
 <header class="hub-header">
     <div class="hub-brand">
         <span class="hub-badge">Laboratorio Creativo</span>
-        <div class="hub-title">Portfolio Juan Bordería Pi · 3 Direcciones de Diseño</div>
+        <div class="hub-title">Portfolio Juan Bordería Pi</div>
     </div>
 
     <!-- TABS -->
     <nav class="hub-tabs">
-        <button class="hub-tab-btn tab-1 active" data-src="ejemplo1-director-suite.html" data-name="The Director's Suite" data-color="var(--accent)" data-features="Obsidian OLED · Oro Champán · Cursor Lente · HUD Timecode · Spotlight Cards">
-            <span>🎬</span> 01. Director's Suite
+        <button class="hub-tab-btn tab-rev active" data-src="ejemplo-scroll-revolution.html" data-name="Scroll-Driven Cinema Revolution" data-color="var(--accent-fire)" data-features="Lenis Smooth Inertia · Apertura Iris Hero · Reel Horizontal Pinned (Premiere Track) · Tarjetas 3D Apilables · Virtual Timecode HUD">
+            <span>🔥</span> 01. Scroll Revolution
+        </button>
+        <button class="hub-tab-btn tab-1" data-src="ejemplo1-director-suite.html" data-name="The Director's Suite" data-color="var(--accent)" data-features="Obsidian OLED · Oro Champán · Cursor Lente Óptico · HUD Timecode · Spotlight Cards">
+            <span>🎬</span> 02. Director's Suite
         </button>
         <button class="hub-tab-btn tab-2" data-src="ejemplo2-kinetic-transmedia.html" data-name="Kinetic Post-Production" data-color="var(--accent-cyan)" data-features="Apple Pro / Linear · Azul Eléctrico · Timeline Tracks · VU Meter · Playhead Scrub">
-            <span>⚡</span> 02. Kinetic Studio
+            <span>⚡</span> 03. Kinetic Studio
         </button>
         <button class="hub-tab-btn tab-3" data-src="ejemplo3-investigative-cinema.html" data-name="The Investigative Documentalist" data-color="var(--accent-amber)" data-features="Criterion Film Noir · Ámbar & Hueso · Waveform Player · Reader Drawer · Grano 35mm">
-            <span>📰</span> 03. Documentalist
+            <span>📰</span> 04. Documentalist
         </button>
     </nav>
 
@@ -251,7 +244,7 @@
             <button class="device-btn" data-device="tablet" title="Tableta (1024px)">💻</button>
             <button class="device-btn" data-device="mobile" title="Móvil (390px)">📱</button>
         </div>
-        <a href="ejemplo1-director-suite.html" target="_blank" class="fullscreen-link" id="ext-link">
+        <a href="ejemplo-scroll-revolution.html" target="_blank" class="fullscreen-link" id="ext-link">
             Abrir en pestaña nueva ↗
         </a>
     </div>
@@ -259,19 +252,19 @@
 
 <main class="hub-stage">
     <div class="iframe-wrapper desktop" id="iframe-box">
-        <iframe src="ejemplo1-director-suite.html" id="preview-frame" title="Vista previa interactiva"></iframe>
+        <iframe src="ejemplo-scroll-revolution.html" id="preview-frame" title="Vista previa interactiva"></iframe>
     </div>
 </main>
 
 <footer class="hub-footer">
     <div id="footer-desc">
-        <strong id="footer-title" style="color: var(--accent);">01. The Director's Suite:</strong> 
-        <span id="footer-features">Obsidian OLED · Oro Champán · Cursor Lente · HUD Timecode · Spotlight Cards</span>
+        <strong id="footer-title" style="color: var(--accent-fire);">01. Scroll-Driven Cinema Revolution:</strong> 
+        <span id="footer-features">Lenis Smooth Inertia · Apertura Iris Hero · Reel Horizontal Pinned (Premiere Track) · Tarjetas 3D Apilables · Virtual Timecode HUD</span>
     </div>
     <div style="display: flex; gap: 16px;">
-        <span>Despliegue nativo sin npm</span>
-        <span>WCAG AA 4.5:1</span>
-        <span>60 fps GPU</span>
+        <span>GSAP 3 + ScrollTrigger</span>
+        <span>Studio Freight Lenis</span>
+        <span>60–120 fps GPU</span>
     </div>
 </footer>
 

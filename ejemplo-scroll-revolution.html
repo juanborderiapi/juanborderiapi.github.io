@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Bordería Pi — Flagship: Scroll-Driven Cinema Revolution</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/director-suite.css">
+    <link rel="stylesheet" href="css/scroll-revolution.css">
+</head>
+<body class="scroll-revolution">
+
+<!-- TOP PLAYHEAD & PROGRESS HUD -->
+<div class="scroll-progress-hud">
+    <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
+</div>
+
+<!-- FLOATING TIMECODE HUD (PREMIERE PLAYHEAD) -->
+<div class="floating-timecode-hud">
+    <div class="tc-dot"></div>
+    <span>TC SCROLL:</span>
+    <span class="tc-display" id="floating-tc-val">00:00:00:00</span>
+    <span style="color: var(--accent); border-left: 1px solid var(--border-gold); padding-left: 8px;">25 FPS</span>
+</div>
+
+<!-- TOP DEMO SWITCHER BAR -->
+<aside style="background: rgba(6, 8, 13, 0.95); border-bottom: 1px solid var(--accent); padding: 8px 16px; font-family: var(--font-mono); font-size: 11px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 4px; z-index: 10000; backdrop-filter: blur(12px);">
+    <div>
+        <span style="color: var(--accent); font-weight: 700;">PROTOTIPO REVOLUCIONARIO:</span> SCROLL-DRIVEN CINEMA (Lenis Smooth Inertia · Apertura Iris Hero · Reel Horizontal Pinned · Tarjetas 3D Apilables)
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="ejemplos.html" style="color: var(--text-secondary); text-decoration: underline;">← Volver al Comparador</a>
+        <a href="index.html" style="background: rgba(200,169,110,0.15); color: var(--accent); padding: 3px 10px; border-radius: 4px; border: 1px solid var(--accent);">Ver Web Original</a>
+    </div>
+</aside>
+
+<nav class="navbar" style="top: 41px;">
+    <div class="container">
+        <a href="#" class="nav-logo">J<span>.</span>Bordería</a>
+        <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+        <ul class="nav-links">
+            <li><a href="#horizontal-portfolio">Reel Horizontal</a></li>
+            <li><a href="#periodismo-stacked">Dossiers 3D</a></li>
+            <li><a href="#proyecto">Transmedia</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ==============================================================
+     1. HERO APERTURE ZOOM (PINNED SCROLL)
+     ============================================================== -->
+<div class="hero-scroll-trigger-wrapper">
+    <div class="hero-pinned-viewport">
+        <div class="hero-cinematic-headline">
+            <div class="hero-role-pill">
+                <span>●</span> Montador Premiere Pro · Periodista de Investigación
+            </div>
+            <h1 class="hero-huge-title">JUAN BORDERÍA PI</h1>
+            <p style="font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto; line-height: 1.6;">
+                Flujo multicámara en Premiere Pro, etalonaje en Lumetri y rigor periodístico. Desplaza para expandir la lente.
+            </p>
+        </div>
+
+        <!-- EXPANDING IRIS / CINEMA FRAME -->
+        <div class="hero-iris-container">
+            <img src="https://img.youtube.com/vi/N5Byr2mOn-g/maxresdefault.jpg" alt="Fotograma Showreel Juan Bordería" style="filter: brightness(0.85) contrast(105%);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,8,13,0.85) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 32px;">
+                <div>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 4px;">REEL PRINCIPAL · REGNUM CHRISTI</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 28px; color: #FFF; margin-top: 8px;">Grabación, Edición Multicámara & Producción Integral</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-cue">
+            <span>Scroll para desplegar</span>
+            <span style="font-size: 16px;">↓</span>
+        </div>
+    </div>
+</div>
+
+<!-- ==============================================================
+     2. HORIZONTAL TIMELINE REEL (PREMIERE PINNED SCRUB)
+     ============================================================== -->
+<section class="horizontal-timeline-section" id="horizontal-portfolio">
+    <div class="timeline-hud-header">
+        <div class="timeline-hud-title">
+            <span style="background: var(--accent); color: #000; padding: 2px 8px; border-radius: 3px; font-weight: 700;">PREMIERE TIMELINE</span>
+            <span>[ ARCHIVO_MULTICAM.PRPROJ ] · DESPLAZAMIENTO HORIZONTAL ASISTIDO</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+            ARRISTRA EL SCROLL VERTICAL PARA VIAJAR POR EL TIMELINE ➔
+        </div>
+    </div>
+
+    <div class="horizontal-track-container">
+        <div class="horizontal-track">
+            
+            <!-- PANEL 01 -->
+            <article class="horizontal-panel" data-id="N5Byr2mOn-g" data-platform="youtube">
+                <div class="panel-media-box">
+                    <img src="https://img.youtube.com/vi/N5Byr2mOn-g/maxresdefault.jpg" alt="Padre Daniel" loading="lazy">
+                    <div class="panel-giant-number">01</div>
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="panel-content-box">
+                    <div>
+                        <div class="panel-tags">
+                            <span class="panel-tag-chip">4K MULTICAM</span>
+                            <span class="panel-tag-chip">PRODUCCIÓN</span>
+                        </div>
+                        <h3 class="panel-title">Padre Daniel: «El Señor no quiere superhéroes»</h3>
+                        <p class="panel-role">Regnum Christi España · Grabación, edición multicámara y producción completa</p>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent);">
+                        CLICK PARA REPRODUCIR CORTE ↗
+                    </div>
+                </div>
+            </article>
+
+            <!-- PANEL 02 -->
+            <article class="horizontal-panel" data-id="mtowqpWHopw" data-platform="youtube">
+                <div class="panel-media-box">
+                    <img src="https://img.youtube.com/vi/mtowqpWHopw/maxresdefault.jpg" alt="Proyecto Promoción" loading="lazy">
+                    <div class="panel-giant-number">02</div>
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="panel-content-box">
+                    <div>
+                        <div class="panel-tags">
+                            <span class="panel-tag-chip">CAMPAÑA</span>
+                            <span class="panel-tag-chip">MONTAJE RÍTMICO</span>
+                        </div>
+                        <h3 class="panel-title">Proyecto Audiovisual de Promoción</h3>
+                        <p class="panel-role">Producción audiovisual · Creación, montaje y sincronización sonora</p>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent);">
+                        CLICK PARA REPRODUCIR CORTE ↗
+                    </div>
+                </div>
+            </article>
+
+            <!-- PANEL 03 -->
+            <article class="horizontal-panel" data-id="NlhGJHQ6JOU" data-platform="youtube">
+                <div class="panel-media-box">
+                    <img src="https://img.youtube.com/vi/NlhGJHQ6JOU/maxresdefault.jpg" alt="Cristo Rey" loading="lazy">
+                    <div class="panel-giant-number">03</div>
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="panel-content-box">
+                    <div>
+                        <div class="panel-tags">
+                            <span class="panel-tag-chip">DOCUMENTAL</span>
+                            <span class="panel-tag-chip">POSTPRODUCCIÓN</span>
+                        </div>
+                        <h3 class="panel-title">Cristo Rey: Centenario 1925–2025</h3>
+                        <p class="panel-role">Regnum Christi España · Edición y postproducción de archivo histórico</p>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent);">
+                        CLICK PARA REPRODUCIR CORTE ↗
+                    </div>
+                </div>
+            </article>
+
+            <!-- PANEL 04 -->
+            <article class="horizontal-panel" data-id="D-nRNI7TOkA" data-platform="youtube">
+                <div class="panel-media-box">
+                    <img src="assets/img/episodio4.jpg" alt="La Capital del Arte" loading="lazy">
+                    <div class="panel-giant-number">04</div>
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="panel-content-box">
+                    <div>
+                        <div class="panel-tags">
+                            <span class="panel-tag-chip">TRANSMEDIA</span>
+                            <span class="panel-tag-chip">CÁMARA & MONTAJE</span>
+                        </div>
+                        <h3 class="panel-title">La Capital del Arte: Episodio 4 (Cervantes)</h3>
+                        <p class="panel-role">Producción transmedia · Operador de cámara y montador principal</p>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent);">
+                        CLICK PARA REPRODUCIR CORTE ↗
+                    </div>
+                </div>
+            </article>
+
+            <!-- PANEL 05 -->
+            <article class="horizontal-panel" data-id="3cz9E_F6Lko" data-platform="youtube">
+                <div class="panel-media-box">
+                    <img src="https://img.youtube.com/vi/3cz9E_F6Lko/maxresdefault.jpg" alt="Alter Christus Especial DANA" loading="lazy">
+                    <div class="panel-giant-number">05</div>
+                    <div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="panel-content-box">
+                    <div>
+                        <div class="panel-tags">
+                            <span class="panel-tag-chip">REPORTAJE</span>
+                            <span class="panel-tag-chip">LOCUCIÓN</span>
+                        </div>
+                        <h3 class="panel-title">Alter Christus Especial DANA: 62 Sacerdotes</h3>
+                        <p class="panel-role">Regnum Christi España · Edición audiovisual y locución en cabina</p>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent);">
+                        CLICK PARA REPRODUCIR CORTE ↗
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     3. STACKED 3D CARDS (APPLE KEYNOTE / LINEAR DEPTH)
+     ============================================================== -->
+<section class="stacked-cards-section" id="periodismo-stacked">
+    <div class="container">
+        <div class="section-header" style="text-align: left; margin-bottom: 60px;">
+            <p class="section-label" style="font-family: var(--font-mono); color: var(--accent);">02 / DOSSIERS EN PROFUNDIDAD</p>
+            <h2 class="section-title" style="font-size: 42px;">Prensa de Investigación & Medios</h2>
+            <p class="section-subtitle">Las tarjetas se apilan con profundidad 3D al desplazarte por la página.</p>
+        </div>
+
+        <div class="stacked-cards-list">
+            
+            <!-- STACKED CARD 1: CRISIS DEL CONCERTA (TDAH) -->
+            <article class="stacked-card-item">
+                <div class="stacked-card-grid">
+                    <div class="stacked-media">
+                        <img src="assets/img/reportaje_tdah_portada.jpg" alt="Portada Crisis del Concerta">
+                    </div>
+                    <div class="stacked-body">
+                        <span class="panel-tag-chip">REPORTAJE EN PROFUNDIDAD · UFV</span>
+                        <h3>Crisis del Concerta: «Tienes que volver a la casilla cero»</h3>
+                        <p>
+                            Investigación periodística rigurosa sobre el desabastecimiento crónico de metilfenidato y el impacto directo en pacientes con TDAH y sus familias. Fuentes sanitarias, testimonios clínicos y análisis de fármacos sustitutivos. Maquetado en Adobe InDesign en formato editorial impreso.
+                        </p>
+                        <div>
+                            <a href="assets/docs/reportaje_tdah_crisis_concerta.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--accent); color: #06080D; border-color: var(--accent);">
+                                📖 Leer Reportaje Completo (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- STACKED CARD 2: MIRADA 21 (REDACCIÓN & SEO) -->
+            <article class="stacked-card-item">
+                <div class="stacked-card-grid">
+                    <div class="stacked-media" style="background: #111726; display: flex; align-items: center; justify-content: center; padding: 24px;">
+                        <div style="text-align: center;">
+                            <div style="font-family: var(--font-heading); font-size: 54px; font-weight: 900; color: var(--accent);">M21</div>
+                            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin-top: 8px;">DIARIO DIGITAL & RADIO</div>
+                        </div>
+                    </div>
+                    <div class="stacked-body">
+                        <span class="panel-tag-chip">MEDIOS UNIVERSITARIOS · 2022–2024</span>
+                        <h3>Mirada 21: Redacción Web, Criterios SEO & WordPress</h3>
+                        <p>
+                            Redacción periodística, curación informativa y publicación directa en gestor de contenidos WordPress bajo criterios SEO. Coberturas económicas sobre la inflación en la cesta de la compra y crónicas de actualidad universitaria como The Body Fest.
+                        </p>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="assets/docs/mirada21_precio_alimentos.pdf" target="_blank" class="btn" style="border: 1px solid var(--border-gold); color: var(--accent-bright); font-size: 13px;">
+                                Noticia: Inflación Alimentos (PDF)
+                            </a>
+                            <a href="assets/docs/mirada21_the_body_fest.pdf" target="_blank" class="btn" style="border: 1px solid var(--border-gold); color: var(--accent-bright); font-size: 13px;">
+                                Crónica: The Body Fest (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- STACKED CARD 3: CABINA DE RADIO UFV -->
+            <article class="stacked-card-item">
+                <div class="stacked-card-grid">
+                    <div class="stacked-media" style="background: #1A1528; display: flex; align-items: center; justify-content: center; padding: 24px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 48px;">🎙️</div>
+                            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); margin-top: 8px;">EMISIÓN EN DIRECTO 28M</div>
+                        </div>
+                    </div>
+                    <div class="stacked-body">
+                        <span class="panel-tag-chip">RADIO & DIRECTOS DE ACTUALIDAD</span>
+                        <h3>Elecciones 28M: Guion Técnico & Cobertura en Directo</h3>
+                        <p>
+                            Locución en cabina de radio y realización de directos informativos, destacando el despliegue electoral de las Elecciones Autonómicas y Municipales 28M. Redacción de escaletas minutadas y seguimiento de resultados electorales en tiempo real.
+                        </p>
+                        <div>
+                            <a href="assets/docs/mirada21_elecciones_28m.pdf" target="_blank" class="btn btn-primary" style="background: var(--accent); color: #06080D; border-color: var(--accent);">
+                                📻 Ver Escaleta y Guion Radio (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     4. PROYECTO TRANSMEDIA
+     ============================================================== -->
+<section id="proyecto" style="padding: 100px 0; background: #080C14;">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label" style="font-family: var(--font-mono); color: var(--accent);">03 / PROYECTO TRANSMEDIA</p>
+            <h2 class="section-title">La Capital del Arte</h2>
+            <p class="section-subtitle">Ecosistema cultural donde ejerzo como operador de cámara y montador principal.</p>
+        </div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-gold); border-radius: var(--radius); padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                    <img src="assets/img/logo_capital.jpg" alt="Logo" style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover;">
+                    <div>
+                        <span class="panel-tag-chip">TRANSMEDIA 2025–2026</span>
+                        <h4 style="font-family: var(--font-heading); font-size: 20px; color: #FFF; margin-top: 4px;">Producción Técnica Integral</h4>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">
+                    Grabación en espacios culturales de primer nivel, montaje multicámara y optimización para YouTube, Spotify, Instagram y TikTok.
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://www.youtube.com/@LaCapitaldelArte" target="_blank" class="btn btn-primary" style="background: var(--accent); color: #000; border-color: var(--accent);">▶ YouTube</a>
+                    <a href="https://open.spotify.com/show/0pJZm4Nxr27bovKG4nvPPd" target="_blank" class="btn" style="border: 1px solid var(--border-gold); color: #FFF;">🎧 Spotify</a>
+                    <a href="https://instagram.com/lacapitaldelarte" target="_blank" class="btn" style="border: 1px solid var(--border-gold); color: #FFF;">📷 Instagram</a>
+                    <a href="https://www.tiktok.com/@lacapitaldelarte_" target="_blank" class="btn" style="border: 1px solid var(--border-gold); color: #FFF;">🎵 TikTok</a>
+                </div>
+            </div>
+            <div>
+                <iframe src="https://www.youtube.com/embed/D-nRNI7TOkA?rel=0" title="La Capital del Arte" style="width: 100%; aspect-ratio: 16/9; border: none; border-radius: var(--radius-sm); box-shadow: 0 15px 40px rgba(0,0,0,0.7);" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     5. CONTACTO
+     ============================================================== -->
+<section id="contacto" style="padding: 100px 0;">
+    <div class="container">
+        <div class="section-header">
+            <p class="section-label" style="font-family: var(--font-mono); color: var(--accent);">04 / COMUNICACIÓN DIRECTA</p>
+            <h2 class="section-title">¿Hablamos de un Proyecto?</h2>
+        </div>
+        <div class="contact-grid">
+            <a href="mailto:jborderiapi@gmail.com" class="contact-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+                <span class="icon">✉️</span>
+                <div>
+                    <div class="label" style="font-family: var(--font-mono); font-size: 11px;">Email</div>
+                    <div class="value">jborderiapi@gmail.com</div>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/juan-javier-border%C3%ADa-pi-/" target="_blank" class="contact-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+                <span class="icon">🔗</span>
+                <div>
+                    <div class="label" style="font-family: var(--font-mono); font-size: 11px;">LinkedIn</div>
+                    <div class="value">Juan Bordería Pi</div>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/juanborderiapi/" target="_blank" class="contact-card" style="border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+                <span class="icon">📷</span>
+                <div>
+                    <div class="label" style="font-family: var(--font-mono); font-size: 11px;">Instagram</div>
+                    <div class="value">@juanborderiapi</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Juan Bordería Pi — Periodista & Comunicador Audiovisual</p>
+    </div>
+</footer>
+
+<!-- MODAL LIGHTBOX -->
+<div class="modal-overlay" id="modal-overlay">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-content" id="modal-content"></div>
+</div>
+
+<!-- LIBRARIES FOR SCROLL ANIMATIONS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+<!-- SCRIPTS -->
+<script src="js/main.js"></script>
+<script src="js/scroll-revolution.js"></script>
+</body>
+</html>

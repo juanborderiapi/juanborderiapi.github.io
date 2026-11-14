@@ -1,0 +1,419 @@
+/* ==============================================================
+   EJEMPLO FLAGSHIP: SCROLL-DRIVEN CINEMA REVOLUTION
+   Animaciones de desplazamiento avanzadas con GSAP ScrollTrigger & Lenis
+   ============================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --bg-deep: #06080D;
+    --bg-surface: #0E131F;
+    --bg-card: #131A2B;
+    --bg-card-hover: #1A243D;
+    --accent: #C8A96E;           /* Oro Champán */
+    --accent-bright: #F5E6C8;
+    --accent-glow: rgba(200, 169, 110, 0.35);
+    --accent-cyan: #38BDF8;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border-gold: rgba(200, 169, 110, 0.22);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius: 16px;
+    --radius-sm: 8px;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+body.scroll-revolution {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Persistent Premiere Playhead & Progress Top Bar */
+.scroll-progress-hud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 99999;
+}
+.scroll-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Floating Timeline Timecode HUD */
+.floating-timecode-hud {
+    position: fixed;
+    bottom: 24px;
+    right: 28px;
+    background: rgba(14, 19, 31, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-gold);
+    border-radius: 100px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    z-index: 9000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+.tc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 10px #EF4444;
+    animation: tcPulse 1.5s infinite;
+}
+@keyframes tcPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+.tc-display {
+    color: var(--accent-bright);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+/* ==============================================================
+   1. HERO APERTURE ZOOM (PINNED SCROLL TRIGGER)
+   ============================================================== */
+.hero-scroll-trigger-wrapper {
+    position: relative;
+    height: 220vh; /* Pinned scroll space */
+}
+
+.hero-pinned-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.hero-cinematic-headline {
+    text-align: center;
+    z-index: 2;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hero-huge-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #FFFFFF 30%, var(--accent-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200, 169, 110, 0.12);
+    border: 1px solid var(--border-gold);
+    color: var(--accent);
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+/* Expanding Iris / Cinema Letterbox Frame on Scroll */
+.hero-iris-container {
+    position: absolute;
+    width: 50vw;
+    height: 28vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(200, 169, 110, 0.2);
+    border: 2px solid var(--border-gold);
+    z-index: 1;
+    transform-origin: center center;
+}
+
+.hero-iris-container iframe,
+.hero-iris-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-scroll-cue {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+    animation: cueBounce 2s infinite ease-in-out;
+}
+@keyframes cueBounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+/* ==============================================================
+   2. HORIZONTAL TIMELINE REEL (PREMIERE PINNED SCRUB)
+   ============================================================== */
+.horizontal-timeline-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #05070B;
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.timeline-hud-header {
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(14, 19, 31, 0.95);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.timeline-hud-title {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.horizontal-track-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.horizontal-track {
+    display: flex;
+    gap: 50px;
+    padding: 0 80px;
+    width: max-content;
+    will-change: transform;
+}
+
+/* Massive Cinematic Horizontal Panels */
+.horizontal-panel {
+    width: 72vw;
+    max-width: 880px;
+    height: 75vh;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius);
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.horizontal-panel:hover {
+    border-color: var(--accent);
+    box-shadow: 0 30px 80px rgba(200, 169, 110, 0.2);
+}
+
+.panel-media-box {
+    position: relative;
+    width: 100%;
+    height: 65%;
+    overflow: hidden;
+    background: #000;
+}
+
+.panel-media-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.horizontal-panel:hover .panel-media-box img {
+    transform: scale(1.06);
+}
+
+.panel-giant-number {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: var(--font-heading);
+    font-size: 90px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    line-height: 1;
+    z-index: 2;
+    transition: transform 0.5s ease-out;
+}
+
+.panel-content-box {
+    padding: 28px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    background: var(--bg-card);
+    z-index: 3;
+}
+
+.panel-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.panel-tag-chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(200, 169, 110, 0.15);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(200, 169, 110, 0.3);
+}
+
+.panel-title {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.panel-role {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+}
+
+/* ==============================================================
+   3. STACKED 3D CARDS (APPLE KEYNOTE / LINEAR DEPTH)
+   ============================================================== */
+.stacked-cards-section {
+    padding: 120px 0;
+    position: relative;
+    background: var(--bg-deep);
+}
+
+.stacked-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    position: relative;
+}
+
+.stacked-card-item {
+    position: sticky;
+    top: 140px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius);
+    padding: 44px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.5);
+    transform-origin: center top;
+    will-change: transform, filter, opacity;
+}
+
+.stacked-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.stacked-media {
+    aspect-ratio: 16/10;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+}
+
+.stacked-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stacked-body h3 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent-bright);
+    margin: 12px 0 16px 0;
+}
+
+.stacked-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .horizontal-panel { width: 88vw; height: 68vh; }
+    .stacked-card-grid { grid-template-columns: 1fr; }
+    .hero-iris-container { width: 85vw; height: 35vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-iris-container { transform: none !important; }
+    .horizontal-track { transform: none !important; }
+    .stacked-card-item { transform: none !important; filter: none !important; }
+}
